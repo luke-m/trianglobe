@@ -22,6 +22,18 @@ This is a portfolio project: backend quality is the point, not feature count.
 - **Conventional commits:** `feat:`, `fix:`, `test:`, `refactor:`, `chore:`.
 - **Milestone discipline:** only work on the current milestone (`docs/SPEC.md` §9). Park out-of-scope ideas in `BACKLOG.md` instead of implementing them.
 
+## Pacing rules (non-negotiable)
+
+- **One logical unit per step**: a scaffold command, one file, or one class plus its
+  test. Nothing more per turn, even when batching feels more efficient.
+- **After each unit: stop.** Explain what was created and why, then wait for Lukas's
+  explicit go before the next step.
+- **An approved plan is a roadmap, not permission** to execute it end-to-end.
+- **Predict-first teaching**: before each new concept, state the goal in plain terms
+  and let Lukas sketch the expected approach before showing real code.
+- **TODO(human) contributions go primarily to backend, Docker, CI, and Terraform** —
+  frontend is the existing strength and needs the least practice.
+
 ## Learning workflow
 
 This project doubles as interview preparation — Lukas must be able to defend every design decision.
