@@ -1,0 +1,33 @@
+# Local full-stack check: `docker compose up --build` → http://localhost:8080
+# Postgres is unused by the app until M1; it is here so the local stack
+# already matches the spec's target shape (SPEC.md §4).
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: trianglobe
+      POSTGRES_USER: trianglobe
+      POSTGRES_PASSWORD: trianglobe # local-only credentials, never production
+    ports:
+      - "5432:5432" # exposed to the host so a SQL client can poke at it
+    volumes:
+      # Named volume: table data survives `docker compose down` (containers
+      # are disposable; their writable layer dies with them).
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trianglobe"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 15s
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
