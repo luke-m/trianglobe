@@ -1,0 +1,13 @@
+# Kept out of the build context (the files sent to Docker at build start):
+# smaller upload, and host build artifacts can't leak into image layers.
+.git
+.github
+.claude
+.vscode
+docs
+backend/target
+frontend/node_modules
+frontend/dist
+frontend/coverage
+*.md
+.DS_Store
