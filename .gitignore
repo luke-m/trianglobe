@@ -3,3 +3,10 @@ backend/target/
 frontend/node_modules/
 frontend/dist/
 frontend/coverage/
+
+# Terraform: provider binaries + state (state may contain sensitive values)
+infra/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
