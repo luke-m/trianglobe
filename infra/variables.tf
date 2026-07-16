@@ -24,3 +24,10 @@ variable "image_tag" {
   type        = string
   default     = "latest"
 }
+
+variable "alert_email" {
+  description = "Email for the monthly cost budget alert"
+  type        = string
+  # No default: personal data stays out of git. Value comes from
+  # terraform.tfvars (gitignored) — see terraform.tfvars.example.
+}
