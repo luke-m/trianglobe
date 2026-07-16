@@ -1,0 +1,16 @@
+#!/bin/bash
+set -euo pipefail
+
+# First boot, bare Amazon Linux -> serving container. Logs: /var/log/cloud-init-output.log
+dnf install -y docker
+systemctl enable --now docker
+
+# Passwordless: the AWS CLI uses the instance role's credentials automatically.
+aws ecr get-login-password --region ${region} \
+  | docker login --username AWS --password-stdin ${ecr_url}
+
+docker run -d \
+  --name trianglobe \
+  --restart always \
+  -p 80:8080 \
+  ${ecr_url}:${image_tag}

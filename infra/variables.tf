@@ -12,3 +12,15 @@ variable "github_repository" {
   type        = string
   default     = "luke-m/trianglobe"
 }
+
+variable "instance_type" {
+  description = "EC2 instance type; t3.micro is covered by free tier / credits"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "image_tag" {
+  description = "Image tag to run; changing it replaces the instance (= redeploy)"
+  type        = string
+  default     = "latest"
+}
