@@ -1,0 +1,7 @@
+
+# Terraform: providers cache + state (state may contain sensitive values)
+infra/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example

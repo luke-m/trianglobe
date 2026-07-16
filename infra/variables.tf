@@ -6,3 +6,9 @@ variable "region" {
   type        = string
   default     = "eu-central-1"
 }
+
+variable "github_repository" {
+  description = "GitHub repo (owner/name) whose main branch may push images"
+  type        = string
+  default     = "luke-m/trianglobe"
+}
